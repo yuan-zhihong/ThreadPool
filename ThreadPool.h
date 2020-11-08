@@ -1,4 +1,8 @@
-﻿#include<vector>
+﻿#ifndef THREADPOOL_H_
+#define THREADPOOL_H_
+
+
+#include<vector>
 #include<deque>
 #include<string>
 #include<mutex>
@@ -43,3 +47,5 @@ private:
 	std::condition_variable_any notFull_;
 
 };
+
+#endif
