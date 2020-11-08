@@ -1,5 +1,5 @@
-#ifndef MYWEBSERVER_THREAD_H
-#define MYWEBSERVER_THREAD_H
+#ifndef THREAD_H
+#define THREAD_H
 
 #include <functional>
 #include <memory>
