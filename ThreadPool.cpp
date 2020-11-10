@@ -36,7 +36,7 @@ void ThreadPool::start(int numThreads)
 	for (int i = 0; i < numThreads; i++){
 		char id[32];
 		snprintf(id, sizeof id, "%d", i + 1);
-		threads_.emplace_back(std::make_unique<Thread>([this] { runInThread(); }), name_ + id);
+		threads_.emplace_back(std::make_unique<Thread>([this] { runInThread(); }, name_ + id));
 	}
 	if (numThreads == 0 && threadInitCallback_)
 	{
@@ -70,7 +70,7 @@ void ThreadPool::run(Task f)
 		}
 		if (!isRunning_)
 			return;
-		assert(!isFull);
+		assert(!isFull());
 
 		queue_.push_back(std::move(f));
 		notEmpty_.notify_one();
